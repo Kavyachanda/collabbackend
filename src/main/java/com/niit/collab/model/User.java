@@ -21,7 +21,11 @@ public class User {
 	private String email;
 	private String phone;
 	private String role;
+	private char status;
+	private byte[] image;
+
 	/*private boolean enabled;*/
+	
 	
 	
 	public String getRole() {
@@ -73,5 +77,18 @@ public class User {
 	public void setEnabled(boolean enabled) {
 		this.enabled = enabled;
 	}*/
+	public char getStatus() {
+		return status;
+	}
+	public void setStatus(char status) {
+		this.status = status;
+	}
+	public byte[] getImage() {
+		return image;
+	}
+	public void setImage(byte[] image) {
+		this.image = image;
+	}
+
 	
 }

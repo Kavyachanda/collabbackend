@@ -52,7 +52,8 @@ public class ForumDAOImpl implements ForumDAO {
 		}
 
 	@Transactional
-	public Forum get(int id) {
+	@SuppressWarnings({ "deprecation", "unchecked", "rawtypes" })
+	public Forum getforum(int id) {
 		String hql = "from Forum where id= "+ "'"+ id+"'" ;
 		Query query=sessionFactory.getCurrentSession().createQuery(hql);
 		List<Forum>list= query.list();
@@ -65,7 +66,6 @@ public class ForumDAOImpl implements ForumDAO {
 		{
 			return list.get(0);
 		}
-		
 	}
 
 }

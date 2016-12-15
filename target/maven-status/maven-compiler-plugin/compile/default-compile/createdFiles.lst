@@ -1,0 +1,16 @@
+com\niit\collab\DAO\UserDAOImpl.class
+com\niit\collab\DAO\BlogDAO.class
+com\niit\collab\controller\BlogController.class
+com\niit\collab\model\Blog.class
+com\niit\collab\model\Forum.class
+com\niit\collab\controller\UserController.class
+com\niit\collab\model\User.class
+com\niit\collab\model\Job.class
+com\niit\collab\DAO\ForumDAOImpl.class
+com\niit\collab\DAO\JobDAO.class
+com\niit\collab\DAO\ForumDAO.class
+com\niit\collab\DAO\UserDAO.class
+com\niit\collab\DAO\BlogDAOImpl.class
+com\niit\collab\controller\JobController.class
+com\niit\collab\DAO\JobDAOImpl.class
+com\niit\collab\controller\ForumController.class

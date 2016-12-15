@@ -1,6 +1,9 @@
 package com.niit.collab.controller;
 
+import java.util.Date;
 import java.util.List;
+
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -14,6 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.niit.collab.DAO.BlogDAO;
 import com.niit.collab.model.Blog;
+import com.niit.collab.model.Forum;
 
 @RestController
 public class BlogController {
@@ -22,8 +26,11 @@ public class BlogController {
 private BlogDAO blogDAO;
 
 @PostMapping(value="/createblog")
-public ResponseEntity<Blog> addblog(@RequestBody Blog blog){
+public ResponseEntity<Blog> addblog(@RequestBody Blog blog,HttpSession session){
 	System.out.println("hello");
+	int uid=(Integer) session.getAttribute("uid");
+	blog.setDoc(new Date());
+	blog.setUserid(uid);
 	blogDAO.saveOrUpdate(blog);
 	return new ResponseEntity<Blog>(blog,HttpStatus.OK);	
 }
@@ -39,6 +46,12 @@ public ResponseEntity<List<Blog>> listblog(){
 public ResponseEntity<Blog> deleteblog(Blog blog,@PathVariable("blogid") int blogid){
 	Blog blog1=blogDAO.get(blogid);
 	blogDAO.delete(blog1);
+	return new ResponseEntity<Blog>(blog,HttpStatus.OK);
+}
+
+@GetMapping(value="/individualblog/{id}")
+public ResponseEntity<Blog> individualblog(@PathVariable("id") int id){
+	Blog blog=blogDAO.get(id);
 	return new ResponseEntity<Blog>(blog,HttpStatus.OK);
 }
 }
