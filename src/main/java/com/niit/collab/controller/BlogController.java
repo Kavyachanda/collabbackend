@@ -16,7 +16,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.niit.collab.DAO.BlogDAO;
+import com.niit.collab.DAO.BlogLikesDAO;
 import com.niit.collab.model.Blog;
+import com.niit.collab.model.BlogLikes;
 import com.niit.collab.model.Forum;
 
 @RestController
@@ -24,6 +26,10 @@ public class BlogController {
 
 @Autowired
 private BlogDAO blogDAO;
+
+
+@Autowired
+private BlogLikesDAO blogLikesDAO;
 
 @PostMapping(value="/createblog")
 public ResponseEntity<Blog> addblog(@RequestBody Blog blog,HttpSession session){
@@ -54,4 +60,20 @@ public ResponseEntity<Blog> individualblog(@PathVariable("id") int id){
 	Blog blog=blogDAO.get(id);
 	return new ResponseEntity<Blog>(blog,HttpStatus.OK);
 }
+
+@PostMapping(value="/likeblog/{blogid}")
+public ResponseEntity<Blog> likeblog(BlogLikes blogLikes,@PathVariable("blogid") int blogid,HttpSession session){
+	int uid=(Integer) session.getAttribute("uid");
+	blogLikes.setBlogid(blogid);
+	blogLikes.setUserid(uid);
+	blogLikes.setLikes("like");
+	blogLikesDAO.saveOrUpdate(blogLikes);
+	List<BlogLikes> list=blogLikesDAO.bloglist(blogid);
+	Blog blog=blogDAO.get(blogid);
+	blog.setBloglike(list.size());
+	blogDAO.saveOrUpdate(blog);
+	return new ResponseEntity<Blog>(HttpStatus.OK);
+}
+
+
 }

@@ -1,11 +1,17 @@
 package com.niit.collab.model;
 
 import java.util.Date;
-
 import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
+import org.springframework.stereotype.Component;
+
+@Entity
+@Table
+@Component
 public class BlogComment {
 
 	@Id
@@ -28,10 +34,10 @@ public class BlogComment {
 	public void setUserid(int userid) {
 		this.userid = userid;
 	}
-	public int getblogid() {
+	public int getBlogid() {
 		return blogid;
 	}
-	public void setblogid(int blogid) {
+	public void setBlogid(int blogid) {
 		this.blogid = blogid;
 	}
 	public String getComment() {

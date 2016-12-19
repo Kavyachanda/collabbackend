@@ -19,6 +19,8 @@ public class Blog {
 	private String title;
 	private Date doc;
 	private String description;
+	private int bloglike;
+	
 	
 	public int getId() {
 		return id;
@@ -38,17 +40,23 @@ public class Blog {
 	public void setUserid(int userid) {
 		this.userid = userid;
 	}
-	public String getdescription() {
-		return description;
-	}
-	public void setdescription(String description) {
-		this.description = description;
-	}
 	public Date getDoc() {
 		return doc;
 	}
 	public void setDoc(Date doc) {
 		this.doc = doc;
+	}
+	public String getDescription() {
+		return description;
+	}
+	public void setDescription(String description) {
+		this.description = description;
+	}
+	public int getBloglike() {
+		return bloglike;
+	}
+	public void setBloglike(int bloglike) {
+		this.bloglike = bloglike;
 	}
 	
 }

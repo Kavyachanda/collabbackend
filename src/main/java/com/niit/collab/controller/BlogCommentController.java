@@ -28,7 +28,7 @@ public class BlogCommentController {
 	@PostMapping(value="/commentblog/{bid}")
 	public ResponseEntity<BlogComment> blogcomment(@RequestBody BlogComment blogcomment,HttpSession session,@PathVariable("bid") int bid){
 		int uid=(Integer) session.getAttribute("uid");
-		blogcomment.setId(bid);
+		blogcomment.setBlogid(bid);
 		blogcomment.setUserid(uid);
 		blogcomment.setCommenttime(new Date());
 		blogCommentDAO.saveOrUpdate(blogcomment);
