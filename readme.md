@@ -1,4 +1,4 @@
-# DIGITAL TEAM - NIIT Collaboration Project 2
+# DIGITAL TEAM - NIIT Project ②
 Collaboration project consisting of basic funtionality like
  - New user registrations
  - Blogs
